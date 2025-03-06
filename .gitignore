@@ -1,0 +1,42 @@
+# Ignore Node.js dependencies
+node_modules/
+frontend/node_modules/
+
+# Ignore React build files
+frontend/build/
+frontend/.cache/
+frontend/.parcel-cache/
+
+# Ignore dependency lock files
+frontend/package-lock.json
+frontend/yarn.lock
+frontend/pnpm-lock.yaml
+
+# Ignore .env files for security
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+# Ignore .NET build and cache files
+api/bin/
+api/obj/
+api/.vs/
+api/.vscode/
+api/*.user
+api/*.suo
+
+# Ignore Visual Studio files
+.vscode/
+.vs/
+*.suo
+*.user
+*.cache
+*.csproj.user
+
+# Ignore global .NET and React IDE-specific files
+*.DS_Store
+*.log
+*.swp
+*.sln.docstates
