@@ -2,22 +2,32 @@
 node_modules/
 frontend/node_modules/
 
-# Ignore React build files
+# Ignore React build and cache files
 frontend/build/
 frontend/.cache/
 frontend/.parcel-cache/
+frontend/.next/
+frontend/.turbo/
 
 # Ignore dependency lock files
 frontend/package-lock.json
 frontend/yarn.lock
 frontend/pnpm-lock.yaml
 
-# Ignore .env files for security
-frontend/.env
-frontend/.env.local
-frontend/.env.development.local
-frontend/.env.test.local
-frontend/.env.production.local
+# Ignore environment files for security
+frontend/.env*
+!frontend/.env.example  # Allow example env file
+
+# Ignore logs
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/pnpm-debug.log*
+frontend/debug.log
+frontend/output.log
+
+# Ignore coverage reports
+frontend/coverage/
 
 # Ignore .NET build and cache files
 api/bin/
@@ -34,9 +44,18 @@ api/*.suo
 *.user
 *.cache
 *.csproj.user
+*.sln.docstates
 
-# Ignore global .NET and React IDE-specific files
+# Ignore .NET migrations and secrets
+api/Migrations/
+api/secrets.json
+
+# Ignore global system files
 *.DS_Store
 *.log
 *.swp
-*.sln.docstates
+Thumbs.db
+ehthumbs.db
+
+# Ignore MacOS system files
+._*
