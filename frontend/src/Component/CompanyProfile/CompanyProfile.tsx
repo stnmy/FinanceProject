@@ -91,16 +91,15 @@ const CompanyProfile = (props: Props) => {
   }, []);
 
   return (
-    <>
+    <div style={{ display: "flex", flexDirection: "column" }}>
       {companyData ? (
         <>
           <RatioList config={tableConfig} data={companyData} />
-          
         </>
       ) : (
         <Spinner/>
       )}
-    </>
+    </div>
   );
 };
 
