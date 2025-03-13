@@ -1,48 +1,33 @@
-// import { handleError } from "../Helpers/ErrorHandler";
-// import { CommentPost } from "../Models/Comment"
+import axios from "axios"
+import { CommentGet, CommentPost } from "../Models/Comment"
+import { handleError } from "../Helpers/ErrorHandler"
 
-// const api = "https://localhost:7012/api/comment/"
 
-// export const commentPostApi = async(title: string, content: string, symbol: string) =>{
-//     try {
-//         const data = await axios.post<CommentPost>(api + `${symbol}`, {
-//             title: title,
-//             content: content,
-//         })
-//         console.log("The api is working")
-//         return data;
-//     } catch (error) {
-//         handleError(error);
-//     }
-// }
+const api = "https://localhost:7012/api/comment/"
 
-import axios from "axios";
-import { handleError } from "../Helpers/ErrorHandler";
-import { CommentPost } from "../Models/Comment";
-
-const api = "https://localhost:7012/api/comment/";
-
-export const commentPostApi = async (title: string, content: string, symbol: string) => {
+export const commentPostAPI = async (title: string, content: string, symbol: string) => {
     try {
-        console.log("API Call Started:", title, content, symbol); // Debugging
-
-        const response = await axios.post<CommentPost>(`${api}${symbol}`, {
-            title: title,
-            content: content,
-        });
-
-        console.log("Raw API Response:", response); // Debugging
-
-        if (!response || !response.data) {
-            console.warn("API response is empty or invalid");
-            return null;
-        }
-
-        console.log("The API is working");
-        return response.data;
+        console.log("Here before i call the api")
+        const data = await axios.post<CommentPost>(api + `${symbol.toLowerCase()}`,{
+            title : title,
+            content: content
+        })
+        console.log("Here after i call the api")
+        console.log(data);
+        return data;
     } catch (error) {
-        console.error("API Call Failed:", error);
         handleError(error);
-        return null; // Ensure function always returns something
     }
-};
+}
+
+export const commentGetAPI = async (symbol: string) => {
+    try {
+        console.log("Here before i call the api")
+        const data = await axios.get<CommentGet[]>(api + `?Symbol=${symbol.toLowerCase()}`)
+        console.log("Here after i call the api")
+        console.log(data);
+        return data;
+    } catch (error) {
+        handleError(error);
+    }
+}
